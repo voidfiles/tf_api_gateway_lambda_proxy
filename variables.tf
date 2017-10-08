@@ -19,3 +19,7 @@ variable "handler" {
 variable "runtime" {
   default = "python3.6"
 }
+
+variable "timeout" {
+  default = 10
+}

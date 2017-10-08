@@ -17,7 +17,7 @@ resource "aws_lambda_function" "lambda" {
   handler          = "${var.handler}"
   runtime          = "${var.runtime}"
   source_code_hash = "${base64sha256(file("${var.lambda_path == "" ? format("%s/%s", path.module, "proxy_api.zip") : var.lambda_path}"))}"
-  timeout          = "10"
+  timeout          = "${var.timeout}"
 }
 
 #The role assigned to the lambda function.
@@ -72,7 +72,7 @@ EOF
 #Initialize the REST API
 resource "aws_api_gateway_rest_api" "api_gw" {
   name        = "${var.name}_api"
-  description = "API Gateway to talk to microservices"
+  description = "${var.name} lambda proxy"
 }
 
 #Set up proxy resource path
