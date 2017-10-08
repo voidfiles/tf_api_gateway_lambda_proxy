@@ -1,2 +1,7 @@
 *.tfvar
 .DS_Store
+*.tfstate
+*.tfstate.backup
+download-cache
+bin
+.terraform
